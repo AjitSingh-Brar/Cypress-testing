@@ -1,9 +1,12 @@
 /// <reference types="cypress" />
 
-describe('Empty test', () => {
+describe('Basic test', () => {
     
-    it('test one', () => {
-        cy.visit('https://codedamn.com')
+    it('We have correct page title', () => {
+        cy.visit('https://codedamn.com');
+       
+        // mocha 
+        cy.contains('Learn Programming'). should('exist');
     })
 
 })

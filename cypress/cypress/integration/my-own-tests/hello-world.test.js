@@ -1,7 +1,12 @@
 /// <reference types="cypress" />
 
+// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imlvc2RldiIsIl9pZCI6IjViNzM2N2JiYzdjNDU1MTA5ZTFmNZI4YyIsIm5hbWUi0iJpb3NkZXYiLCJpYXQiOjE2MDY2MDQxMjB9.rVTbWCbu7U11LxOICqWA70ierl3Dkxj4N9hCAUX4SUE'
 describe('Basic Desktop Test', () => {
-    
+    // before(() =>{
+    //     cy.then(()=>{
+    //         window.localStorage.setItem('__auth__token', token);
+    //     })
+    // })
     beforeEach(() => {
         // bootstrapping external things
         cy.viewport(1280, 720);
@@ -79,6 +84,16 @@ describe('Basic Desktop Test', () => {
        
     })
 
-    
+    it.only("Should load page correctly", () => {
+
+        cy.log("Checking for the explore all button");
+        cy.contains('Explore All Roadmaps', {timeout: 1 * 1000}).should('exist'); 
+
+        cy.log("Checking second div info");
+        cy.get("[data-testid=homepage-cta]", { timeout: 1*1000}).then(el => {
+            expect(el.text()).to.eq('Explore All Learning Paths')
+        })
+         
+    })
 
 })

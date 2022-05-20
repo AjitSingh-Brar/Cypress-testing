@@ -84,7 +84,7 @@ describe('Basic Desktop Test', () => {
        
     })
 
-    it.only("Should load page correctly", () => {
+    it("Should load page correctly", () => {
 
         cy.log("Checking for the explore all button");
         cy.contains('Explore All Roadmaps', {timeout: 1 * 1000}).should('exist'); 
@@ -96,4 +96,15 @@ describe('Basic Desktop Test', () => {
          
     })
 
+    it.only("New file feature works ", () => {
+
+        cy.log("Checking for the explore all button");
+        cy.contains('Explore All Roadmaps', {timeout: 1 * 1000}).should('exist'); 
+
+        cy.log("Checking second div info");
+        cy.get("[data-testid=homepage-cta]", { timeout: 1*1000}).then(el => {
+            expect(el.text()).to.eq('Explore All Learning Paths')
+        }).type('{ctrl}{a}{c}')
+         
+    })
 })
